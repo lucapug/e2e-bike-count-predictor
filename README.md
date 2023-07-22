@@ -1,17 +1,19 @@
 # e2e-bike-count-predictor
 
-A bike-sharing prediction service that can be useful to plan daily supply of bikes based on historical data
+A bike-sharing prediction service is a useful tool to plan daily supply of bikes. The main goal is to create an end to end service with the main characteristics required in a production environment: possibility of monitoring in production with possible consequent refinement of the prediction model, reproducibility of the entire workflow, quality checks and automation.
 
 ## Problem Description
 
 ### Overview
 
-The problem I have chosen to work on is determining the age of abalones by predicting the number of rings on their shells. The age of abalone is determined by cutting the shell through the cone, staining it, and counting the number of rings through a microscope – a boring and time-consuming task. Other measurements, which are easier to obtain, may be used to predict the age. The number of rings is the value to predict.
-This will be treated as a regression problem.
+The problem is assisting a bike-sharing activity in taking decisions about the supply of bikes over time, to promptly react to demand fluctuations. The specific objective is to predict the hourly count of rented bikes. This will be treated as a regression problem.
 
-### Variables
+### Data Source
 
-Variables from left to right on the `abalone.csv` file are:
+For the present project, the predictions are based on historical data from the bike-sharing system of the city of Seoul, in South Korea. Ddareungi (Seoul Bike) is Seoul, South Korea’s bike-sharing system. Ddareungi started as a leisure activity but has transformed into a popular means of transportation.
+In particular, there is a dataset originally extracted from the official Seoul Open Data Plaza and that was already used in scientific research activities (see references). It is available for download in the UCI machine learning Repository. 
+
+### Dataset description
 
 * Sex: M, F, and I (infant)
 * Length: Longest shell measurement (mm)
@@ -29,9 +31,7 @@ These variables were measured on 4177 abalones.
 
 * Warwick J Nash, Tracy L Sellers, Simon R Talbot, Andrew J Cawthorn and Wes B Ford (1994) ”The Population Biology of Abalone (Haliotis species) in Tasmania. I. Blacklip Abalone (H. rubra) from the North Coast and Islands of Bass Strait”, Sea Fisheries Division, Technical Report No. 48.
 
-### Data Source
-
-UCI machine learning Repository.\`
+### 
 
 ## Preparing the Dataset files
 
