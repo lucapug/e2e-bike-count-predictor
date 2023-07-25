@@ -14,7 +14,7 @@ There is a dataset originally extracted from the official Seoul Open Data Plaza 
 
 ### Dataset description
 
-It is a tabular dataset, comprising **8760 rows** and <strong>14 columns</strong>. here below the name and short explanation of each column (variable):
+It is a tabular dataset, comprising **8760 rows** and <strong>14 columns</strong>. Here below the name and short explanation of each column (variable):
 
 * Date : year-month-day 
 * Rented Bike count : Count of bikes rented at each hour 
@@ -35,7 +35,7 @@ The data stored in a row are values for a fixed hour of the day. The data spans 
 
 ### References
 
-* Sathishkumar V E & Yongyun Cho (2020): A rule-based model for Seoul Bike sharing demand prediction using weather data, European Journal of Remote Sensing, DOI:10.1080/22797254.2020.1725789
+* Sathishkumar V E & Yongyun Cho (2020). A rule-based model for Seoul Bike sharing demand prediction using weather data, <em>European Journal of Remote Sensing</em>, DOI:10.1080/22797254.2020.1725789
 * Ngo, T.T., Pham, H.T., Acosta, J.G., & Derrible, S. (2022). Predicting Bike-Sharing Demand Using Random Forest. <em>Journal of Science and Transport Technology</em>.
 
 ### 
