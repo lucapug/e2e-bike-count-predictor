@@ -6,11 +6,11 @@ A bike-sharing prediction service is a useful tool to plan daily supply of bikes
 
 ### Overview
 
-The problem is assisting a bike-sharing activity in taking decisions about the supply of bikes over time, to promptly react to demand fluctuations. The specific objective is to predict the hourly count of rented bikes. For this project, the predictions are based on historical data from the bike-sharing system of the city of Seoul, in South Korea. Ddareungi (Seoul Bike) is Seoul, South Korea’s bike-sharing system. Ddareungi started as a leisure activity but has transformed into a popular means of transportation. This will be treated as a regression problem.
+The problem is assisting a bike-sharing activity in taking decisions about the supply of bikes over time, to promptly react to demand fluctuations. The specific objective is to predict the hourly count of rented bikes. For this project, the predictions are based on historical data from the bike-sharing system of the city of Seoul, in South Korea. Ddareungi (Seoul Bike) is Seoul, South Korea’s bike-sharing system. Ddareungi started as a leisure activity but has transformed into a popular means of transportation. This will be treated as a regression problem.
 
 ### Data Source
 
-There is a dataset originally extracted from the official Seoul Open Data Plaza and that was already used in scientific research activities (see references). It is publicly available in the UCI machine learning Repository and it can be downloaded from [here](https://archive.ics.uci.edu/dataset/560/seoul+bike+sharing+demand). 
+There is a dataset originally extracted from the official Seoul Open Data Plaza and that was already used in scientific research activities (see references). It is publicly available in the **UCI machine learning Repository** and it can be downloaded from [here](https://archive.ics.uci.edu/dataset/560/seoul+bike+sharing+demand). 
 
 ### Dataset description
 
@@ -31,7 +31,7 @@ It is a tabular dataset, comprising **8760 rows** and <strong>14 columns</strong
 * Holiday : Holiday/No holiday 
 * Functional Day : NoFunc(Non Functional Hours), Fun(Functional hours)
 
-The data stored in a row are values for a fixed hour of the day. The data spans from December, 1, 2017 to November, 30, 2018. The **Rented Bike count**` `is the target variable in this problem. 
+The data stored in a row are values for a fixed hour of the day. The data spans from December, 1, 2017 to November, 30, 2018. The **Rented Bike count** is the target variable in this problem. 
 
 ### References
 
