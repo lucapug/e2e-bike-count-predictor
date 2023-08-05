@@ -10,7 +10,9 @@ The problem is assisting a bike-sharing activity in taking decisions about the s
 
 ### Data Source
 
-There is a dataset originally extracted from the official Seoul Open Data Plaza and that was already used in scientific research activities (see references). It is publicly available in the **UCI machine learning Repository** and it can be downloaded from [here](https://archive.ics.uci.edu/dataset/560/seoul+bike+sharing+demand).
+There is a dataset originally extracted from the official Seoul Open Data Plaza and that was already used in scientific research activities (see references). It is publicly available in the <strong>UCI machine learning Repository</strong>:
+
+*Seoul Bike Sharing Demand. (2020). UCI Machine Learning Repository.* [https://doi.org/10.24432/C5F62R](https://doi.org/10.24432/C5F62R).
 
 ### Dataset description
 
@@ -42,7 +44,7 @@ The data stored in a row are values for a fixed hour of the day. The data spans 
 
 ## Environment setting
 
-The whole development has been done in an isolated virtual environment. For the sake of reproducibility, all the employed libraries are recorded with pinned versions. Among the best practices adopted are the usage of linters, formatters and pre-commit hooks
+The whole development has been done in an isolated virtual environment. I have chosen [Poetry](https://python-poetry.org/) as Python dependency manager. For the sake of reproducibility, all the employed libraries are recorded with pinned versions. Among the best practices adopted are the usage of linters, formatters and pre-commit hooks
 
 ## Preparing the Dataset files
 
