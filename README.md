@@ -10,28 +10,28 @@ The problem is assisting a bike-sharing activity in taking decisions about the s
 
 ### Data Source
 
-There is a dataset originally extracted from the official Seoul Open Data Plaza and that was already used in scientific research activities (see references). It is publicly available in the **UCI machine learning Repository** and it can be downloaded from [here](https://archive.ics.uci.edu/dataset/560/seoul+bike+sharing+demand). 
+There is a dataset originally extracted from the official Seoul Open Data Plaza and that was already used in scientific research activities (see references). It is publicly available in the **UCI machine learning Repository** and it can be downloaded from [here](https://archive.ics.uci.edu/dataset/560/seoul+bike+sharing+demand).
 
 ### Dataset description
 
 It is a tabular dataset, comprising **8760 rows** and <strong>14 columns</strong>. Here below the name and short explanation of each column (variable):
 
-* Date : year-month-day 
-* Rented Bike count : Count of bikes rented at each hour 
-* Hour : Hour of he day 
-* Temperature : Temperature in Celsius 
-* Humidity : % 
-* Windspeed : m/s 
-* Visibility : 10m 
-* Dew point temperature : Temperature in Celsius 
-* Solar radiation : MJ/m2 
-* Rainfall : mm 
-* Snowfall : cm 
-* Seasons : Winter, Spring, Summer, Autumn 
-* Holiday : Holiday/No holiday 
+* Date : year-month-day
+* Rented Bike count : Count of bikes rented at each hour
+* Hour : Hour of he day
+* Temperature : Temperature in Celsius
+* Humidity : %
+* Windspeed : m/s
+* Visibility : 10m
+* Dew point temperature : Temperature in Celsius
+* Solar radiation : MJ/m2
+* Rainfall : mm
+* Snowfall : cm
+* Seasons : Winter, Spring, Summer, Autumn
+* Holiday : Holiday/No holiday
 * Functional Day : NoFunc(Non Functional Hours), Fun(Functional hours)
 
-The data stored in a row are values for a fixed hour of the day. The data spans from December, 1, 2017 to November, 30, 2018. The **Rented Bike count** is the target variable in this problem. 
+The data stored in a row are values for a fixed hour of the day. The data spans from December, 1, 2017 to November, 30, 2018. The **Rented Bike count** is the target variable in this problem.
 
 ### References
 
@@ -40,8 +40,11 @@ The data stored in a row are values for a fixed hour of the day. The data spans 
 
 ### 
 
-## Preparing the Dataset files
+## Environment setting
 
+The whole development has been done in an isolated virtual environment. For the sake of reproducibility, all the employed libraries are recorded with pinned versions. Among the best practices adopted are the usage of linters, formatters and pre-commit hooks
+
+## Preparing the Dataset files
 
 From the total samples, 600 were set aside. These 600 samples were saved to external file, `reserved_data.csv`.
 To simulate monthly data when deploying in batch mode, the 600 samples were divided into 12 batches (each batch containing 50 samples), and each batch was saved to a csv file (`reserved_1.csv`, `reserved_2.csv`, ..., `reserved_12.csv`).
