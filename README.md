@@ -42,9 +42,9 @@ The data stored in a row are values for a fixed hour of the day. The data spans 
 
 ### 
 
-## Environment setting
+## Preparing the Dev Environment
 
-The whole development has been done in an isolated virtual environment. I have chosen [Poetry](https://python-poetry.org/) as Python dependency manager. For the sake of reproducibility, all the employed libraries are recorded with pinned versions. Among the best practices adopted are the usage of linters, formatters and pre-commit hooks
+The whole development has been done in an isolated virtual environment. I have chosen [Poetry](https://python-poetry.org/) as Python dependency manager. For better reproducibility, all the employed libraries are recorded with pinned versions. Among the best coding practices adopted are the usage of linters, formatters and pre-commit hooks
 
 ## Preparing the Dataset files
 
