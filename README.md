@@ -33,7 +33,7 @@ It is a tabular dataset, comprising **8760 rows** and <strong>14 columns</strong
 * Holiday : Holiday/No holiday
 * Functional Day : NoFunc(Non Functional Hours), Fun(Functional hours)
 
-The data stored in a row are values for a fixed hour of the day. The data spans from December, 1, 2017 to November, 30, 2018. The **Rented Bike count** is the target variable in this problem.
+The data stored in a row are values for a fixed hour of the day. The dataset spans from December, 1, 2017 to November, 30, 2018. The **Rented Bike count** is the target variable in this problem.
 
 ### References
 
@@ -46,31 +46,7 @@ The data stored in a row are values for a fixed hour of the day. The data spans 
 
 The whole development has been done in an isolated virtual environment. I have chosen [Poetry](https://python-poetry.org/) as Python dependency manager. For better reproducibility, all the employed libraries are recorded with pinned versions. Among the best coding practices adopted are the usage of linters, formatters and pre-commit hooks
 
-## Preparing the Dataset files
+## Preparing the Dataset files (prepare\_data.ipynb)
 
-From the total samples, 600 were set aside. These 600 samples were saved to external file, `reserved_data.csv`.
-To simulate monthly data when deploying in batch mode, the 600 samples were divided into 12 batches (each batch containing 50 samples), and each batch was saved to a csv file (`reserved_1.csv`, `reserved_2.csv`, ..., `reserved_12.csv`).
-These files are uploaded to s3 bucket at this location: "s3://mlops-zoomcamp-datasets/live/".
-The remaining 3577 samples are saved into a separate csv file, `abalone_data.csv`. The data in this file will be used to train the model; this will also serve as the reference data for calculating data drift, and regression model performance during model monitoring.
-File is uploaded to s3 bucket at this location: "s3://mlops-zoomcamp-datasets/reference-data/abalone\_data.csv". This is the location the Prefect Deployment of the model training gets the training data from. This is also the location the monitoring service gets the reference data from.
-The file containing the code that does this splitting is `prepare_data.ipynb`.
-
-### Training
-
-* Scaling of numerical features is done with `MinMaxScaler`
-* Scaling of categorical features is done with `OneHotEncoder`
-
-The model is trained by running a randomized search over the following regression models `RandomForestRegressor`, `ElasticNet`, `Ridge`, `LinearRegression` and `Lasso` across a range of hyperparameters.
-
-**Experiment tracking** is done using MLFlow. The best estimators i.e the model with the lowest `validation_rmse` for a hyperparameter configuration of the regression models is registered in MlFlow's model registry.
-The chosen best model is then transitioned to "production" stage in the model registry.
-
-**The model training is orchestrated** via a fully deployed workflow with Prefect.
-This same best model, is merged with the preprocessing pipeline to make a single `.pkl` Python object and is logged to a new experiment (the new experiment name has "\_production" appended to previous experiment name). This combined preprocessor and model, as a single object, will be used for making predictions will in deployment.
-
-### Model Deployment
-
-Model is deployed using batch deployment method.
-The orchestration of this is fully automated by Prefect, with the prediction and model monitoring scheduled to happen on the second day of every month. Input data, as well as reference data required for measuring data drift is loaded from an s3 bucket storage. The combined, single object preprocessor and model, is loaded and applied to both input and reference to make predictions.
-
-**These prediction results are then fed to Evidently** which uses it to calculate data drift and the regression model performance. The results of this calculations are then used to generate interactive html reports, which contain visuals, charts and metrics which could be further explored.
+I have held out part of the dataset in order to simulate a monitoring task during the deployment in production. In particular, from the total 8760 samples, I have stored 6576 samples from Winter, Spring and Summer in `ref_data.csv` and the remaining 2184 samples (Autumn) have been stored in `curr_data.csv`.
+To simulate weekly data monitoring, the curr\_data samples have been divided into 13 batches (each batch containing 24x7=168 samples), and each batch was saved to a csv file (`curr_data_week01.csv`, ``` curr_data_week02``.csv ```, ..., `reserved_12.csv`).
