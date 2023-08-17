@@ -46,7 +46,8 @@ The data stored in a row are values for a fixed hour of the day. The dataset spa
 
 The whole development has been done in an isolated virtual environment. I have chosen [Poetry](https://python-poetry.org/) as Python dependency manager. For better reproducibility, all the employed libraries are recorded with pinned versions. Among the best coding practices adopted are the usage of linters, formatters and pre-commit hooks
 
-## Preparing the Data
+## Preparing the Data and training a baseline model
 
-The whole data preparation, the Exploratory Data Analysis and the definition of a baseline model are done inside the `prepare_data.ipynb` notebook. I have held out part of the dataset in order to simulate a monitoring task during the deployment in production. In particular, from the total 8760 samples, I have stored 6576 samples from Winter, Spring and Summer in `ref_data.csv` and the remaining 2184 samples (Autumn) have been stored in `curr_data.csv`.
+The whole data preparation, the Exploratory Data Analysis and the definition of a baseline model are done inside the `bike_count.ipynb` notebook. 
+I have held out part of the dataset in order to simulate a monitoring task during the deployment in production. In particular, from the total 8760 samples, I have stored 6576 samples from Winter, Spring and Summer in `ref_data.csv` and the remaining 2184 samples (Autumn) have been stored in `curr_data.csv`.
 To simulate weekly data monitoring, the curr\_data samples have been further divided into 13 batches (each batch containing samples of a week, i.e. 24x7=168 samples), and each batch has been saved to a csv file (`curr_data_week01.csv`, `curr_data_week02.csv`,...)
