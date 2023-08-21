@@ -1,10 +1,12 @@
-import pickle
-
+import mlflow
 import pandas as pd
 from sklearn.metrics import mean_squared_error
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction import DictVectorizer
+
+mlflow.set_tracking_uri("sqlite:///mlflow.db")
+mlflow.set_experiment("bike-count-experiment")
 
 
 def read_data():
@@ -64,15 +66,22 @@ def prepare_dictionaries(df: pd.DataFrame):
     return dicts
 
 
-def train_baseline(X_train, X_val, y_train, y_val, dv):
-    lr = LinearRegression()
-    lr.fit(X_train, y_train)
+def train_baseline(X_train, X_val, y_train, y_val):
+    with mlflow.start_run(run_name="baseline"):
+        mlflow.set_tag("developer", "luca")
 
-    with open('../models/lin_reg.bin', 'wb') as f_out:
-        pickle.dump((dv, lr), f_out)
+        mlflow.log_param("ref-data-path", "../data/interim/ref_data.csv")
 
-    y_pred = lr.predict(X_val)
-    rmse = mean_squared_error(y_val, y_pred, squared=False)
+        lr = LinearRegression()
+        lr.fit(X_train, y_train)
+
+        y_pred = lr.predict(X_val)
+        rmse = mean_squared_error(y_val, y_pred, squared=False)
+        mlflow.log_metric("rmse", rmse)
+
+        mlflow.log_artifact(
+            local_path="../models/lin_reg.bin", artifact_path="models_pickle"
+        )
 
     return rmse
 
@@ -96,7 +105,7 @@ def main():
     val_dicts = prepare_dictionaries(df_val)
     X_val = dv.transform(val_dicts)
 
-    rmse = train_baseline(X_train, X_val, y_train, y_val, dv)
+    rmse = train_baseline(X_train, X_val, y_train, y_val)
 
     print(f'rmse: {rmse}')
 
