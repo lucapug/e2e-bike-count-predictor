@@ -37,7 +37,7 @@ def features_engineering(data: pd.DataFrame):
     # (deterministic relation: no_functioning -> no rented bike for that day)
     data = data.loc[data['functioning_day'] == 'Yes']
 
-    # qualitative maanual feature selection
+    # qualitative maanual feature selection from EDA
     data = data[
         [
             'temperature',
