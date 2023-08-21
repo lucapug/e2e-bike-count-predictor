@@ -60,5 +60,6 @@ All the experiments are contained in the training folder and they are tracked us
 
 For the choiced best\_model a script was created, named train\_best\_flow.py, where the training pipeline for the model with the best params is executed as flow orchestrated by Prefect. Once executed, here below is a screenshot of the Prefect dashboard.
 ![The train pipeline as shown in the prefect dashboard](.media/img_0.jpeg)
+
 As a second product of the script, the pipeline parameters are registered in the mlflow dashboard as a new run of the bike-count-experiment
 ![all the runs reported in the mlflow dashboard](.media/img_1.jpeg)
