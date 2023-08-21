@@ -56,7 +56,8 @@ To simulate weekly data monitoring, the curr\_data samples have been further div
 
 All the experiments are contained in the training folder and they are tracked using MLFlow. `experiments.py` is a script obtained from a refactored version of the bike\_count notebook. It containes runs of the mlflow experiment named <em>'bike-count-experiment'</em>. While `train_xbg.py` contains runs of the same mlflow experiment, created by fine tuning the xgb model with the aid of the hyperopt library. In the end, the xgboost model with best parameters is chosen as best model due to its performance in terms of rmse and model file dimension.
 
-Orchestrate the train pipeline
+## Orchestrate the train pipeline
+
 For the choiced best\_model a script was created, named train\_best\_flow.py, where the training pipeline for the model with the best params is executed as flow orchestrated by Prefect. Once executed, here below is a screenshot of the Prefect dashboard.
 ![The train pipeline as shown in the prefect dashboard](.media/img_0.jpeg)
 As a second product of the script, the pipeline parameters are registered in the mlflow dashboard as a new run of the bike-count-experiment
