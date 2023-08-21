@@ -1,6 +1,11 @@
 import mlflow
 import pandas as pd
 from sklearn.metrics import mean_squared_error
+from sklearn.ensemble import (
+    ExtraTreesRegressor,
+    RandomForestRegressor,
+    GradientBoostingRegressor,
+)
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction import DictVectorizer
@@ -86,6 +91,29 @@ def train_baseline(X_train, X_val, y_train, y_val):
     return rmse
 
 
+def train_experiments(X_train, X_val, y_train, y_val):
+    mlflow.sklearn.autolog()
+
+    for model_class in (
+        RandomForestRegressor,
+        GradientBoostingRegressor,
+        ExtraTreesRegressor,
+    ):
+        with mlflow.start_run():
+            mlflow.log_param("ref-data-path", "../data/interim/ref_data.csv")
+
+            mlflow.log_artifact(
+                "../models/preprocessor.b", artifact_path="preprocessor"
+            )
+
+            mlmodel = model_class()
+            mlmodel.fit(X_train, y_train)
+
+            y_pred = mlmodel.predict(X_val)
+            rmse = mean_squared_error(y_val, y_pred, squared=False)
+            mlflow.log_metric("rmse", rmse)
+
+
 def main():
     ref_data = read_data()
     data_prep = features_engineering(ref_data)
@@ -105,9 +133,10 @@ def main():
     val_dicts = prepare_dictionaries(df_val)
     X_val = dv.transform(val_dicts)
 
-    rmse = train_baseline(X_train, X_val, y_train, y_val)
+    # rmse = train_baseline(X_train, X_val, y_train, y_val)
+    train_experiments(X_train, X_val, y_train, y_val)
 
-    print(f'rmse: {rmse}')
+    # print(f'rmse: {rmse}')
 
 
 if __name__ == '__main__':
