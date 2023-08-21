@@ -102,10 +102,6 @@ def train_experiments(X_train, X_val, y_train, y_val):
         with mlflow.start_run():
             mlflow.log_param("ref-data-path", "../data/interim/ref_data.csv")
 
-            mlflow.log_artifact(
-                "../models/preprocessor.b", artifact_path="preprocessor"
-            )
-
             mlmodel = model_class()
             mlmodel.fit(X_train, y_train)
 
