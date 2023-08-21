@@ -48,6 +48,10 @@ The whole development has been done in an isolated virtual environment. I have c
 
 ## Preparing the Data and training a baseline model
 
-The whole data preparation, the Exploratory Data Analysis and the definition of a baseline model are done inside the `bike_count.ipynb` notebook. 
+The whole data preparation, the Exploratory Data Analysis and the definition of a baseline model are done inside the `bike_count.ipynb` notebook.
 I have held out part of the dataset in order to simulate a monitoring task during the deployment in production. In particular, from the total 8760 samples, I have stored 6576 samples from Winter, Spring and Summer in `ref_data.csv` and the remaining 2184 samples (Autumn) have been stored in `curr_data.csv`.
 To simulate weekly data monitoring, the curr\_data samples have been further divided into 13 batches (each batch containing samples of a week, i.e. 24x7=168 samples), and each batch has been saved to a csv file (`curr_data_week01.csv`, `curr_data_week02.csv`,...)
+
+## Tracking the training experiments
+
+All the experiments are contained in the training folder and they are tracked using MLFlow. `experiments.py` is a script obtained from a refactored version of the bike\_count notebook. It containes runs of the mlflow experiment named <em>'bike-count-experiment'</em>. While `train_xbg.py` contains runs of the same mlflow experiment, created by fine tuning the xgb model with the aid of the hyperopt library. In the end the xgboost model with best parameters is chosen as best model due to its performance in terms of rmse and model file dimension.
