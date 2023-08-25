@@ -17,6 +17,7 @@ hyperopt = "^0.2.7"
 prefect = "^2.11.4"
 flask = "^2.3.3"
 gunicorn = "^21.2.0"
+evidently = "^0.4.2"
 
 
 [tool.poetry.group.dev.dependencies]
