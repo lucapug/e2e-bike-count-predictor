@@ -51,5 +51,4 @@ target-version = ['py39']
 skip-string-normalization = true
 
 [tool.isort]
-profile = "hug"
-src_paths = ["isort", "test"]
+profile = "black"
