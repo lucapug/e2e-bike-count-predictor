@@ -45,10 +45,6 @@ def features_engineering(data: pd.DataFrame):
     # add a column with day of the week
     data['weekday'] = pd.to_datetime(data['date'], dayfirst=True).dt.strftime('%A')
 
-    # filtering out rows for not functioning days
-    # (deterministic relation: no_functioning -> no rented bike for that day)
-    data = data.loc[data['functioning_day'] == 'Yes']
-
     # qualitative maanual feature selection from EDA
     data = data[
         [
