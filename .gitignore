@@ -163,3 +163,4 @@ data/
 mlflow.db
 training/mlruns/
 training/models/
+*.bin
