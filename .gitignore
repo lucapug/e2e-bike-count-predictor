@@ -165,3 +165,4 @@ training/mlruns/
 training/models/
 *.bin
 reports/
+monitoring/workspace
